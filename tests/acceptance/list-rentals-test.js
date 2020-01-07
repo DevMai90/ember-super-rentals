@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { visit, currentURL } from '@ember/test-helpers';
+import { visit, currentURL, click } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 
 // Test will go to the list-rentals route and see if it loads.
@@ -18,11 +18,34 @@ module('Acceptance | list rentals', function(hooks) {
   */
 
   // Test driven development. Write our application goals as a series of tests.
-  test('should show rentals as the home page', async assert => {});
+  test('should show rentals as the home page', async assert => {
+    await visit('/');
 
-  test('should link to information about the company', async assert => {});
+    assert.equal(
+      currentURL(),
+      '/rentals',
+      'should redirect automatically to the rentals page'
+    );
+  });
 
-  test('should link to the contact information', async assert => {});
+  test('should link to information about the company', async assert => {
+    await visit('/');
+    // CSS Selector
+    await click('.menu-about');
+
+    assert.equal(currentURL(), '/about', 'should redirect to the about page');
+  });
+
+  test('should link to the contact information', async assert => {
+    await visit('/');
+    await click('.menu-contact');
+
+    assert.equal(
+      currentURL(),
+      '/contact',
+      'should redirect to the contact page'
+    );
+  });
 
   test('should list available rentals', async assert => {});
 
