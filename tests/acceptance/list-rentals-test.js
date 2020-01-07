@@ -1,5 +1,6 @@
 import { module, test } from 'qunit';
 import { visit, currentURL, click } from '@ember/test-helpers';
+
 import { setupApplicationTest } from 'ember-qunit';
 
 // Test will go to the list-rentals route and see if it loads.
