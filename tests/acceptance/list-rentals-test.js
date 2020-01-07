@@ -19,7 +19,7 @@ module('Acceptance | list rentals', function(hooks) {
   */
 
   // Test driven development. Write our application goals as a series of tests.
-  test('should show rentals as the home page', async assert => {
+  test('should show rentals as the home page', async function(assert) {
     await visit('/');
 
     assert.equal(
@@ -29,7 +29,7 @@ module('Acceptance | list rentals', function(hooks) {
     );
   });
 
-  test('should link to information about the company', async assert => {
+  test('should link to information about the company', async function(assert) {
     await visit('/');
     // CSS Selector
     await click('.menu-about');
@@ -37,7 +37,7 @@ module('Acceptance | list rentals', function(hooks) {
     assert.equal(currentURL(), '/about', 'should redirect to the about page');
   });
 
-  test('should link to the contact information', async assert => {
+  test('should link to the contact information', async function(assert) {
     await visit('/');
     await click('.menu-contact');
 
@@ -48,9 +48,17 @@ module('Acceptance | list rentals', function(hooks) {
     );
   });
 
-  test('should list available rentals', async assert => {});
+  test('should list available rentals', async function(assert) {
+    await visit('/');
 
-  test('should filter the list of rentals by city', async assert => {});
+    assert.equal(
+      this.element.querySelectorAll('.listing').length,
+      3,
+      'should display 3 listings'
+    );
+  });
 
-  test('should show details for a selected rental', async assert => {});
+  test('should filter the list of rentals by city', async function(assert) {});
+
+  test('should show details for a selected rental', async function(assert) {});
 });
