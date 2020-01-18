@@ -1,26 +1,55 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+// Render allows us to use template strings so we can write html
+import { render, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | rental-listing', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  // Rental will be set to its own local scope in each test function
+  hooks.beforeEach(function() {
+    this.rental = {
+      image: 'fake.png',
+      title: 'test-title',
+      owner: 'test-owner',
+      type: 'test-type',
+      city: 'test-city',
+      bedrooms: 3
+    };
+  });
 
-    await render(hbs`{{rental-listing}}`);
+  test('should display rental details', async function(assert) {
+    await render(hbs`{{rental-listing rental=this.rental}}`);
 
-    assert.equal(this.element.textContent.trim(), '');
+    assert.equal(
+      this.element.querySelector('.listing h3').textContent.trim(),
+      'test-title',
+      'Title: test-title'
+    );
+    assert.equal(
+      this.element.querySelector('.listing .owner').textContent.trim(),
+      'Owner: test-owner',
+      'Owner: test-owner'
+    );
+  });
 
-    // Template block usage:
-    await render(hbs`
-      {{#rental-listing}}
-        template block text
-      {{/rental-listing}}
-    `);
+  test('should toggle wide class on click', async function(assert) {
+    await render(hbs`{{rental-listing rental=this.rental}}`);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.notOk(
+      this.element.querySelector('.image.wide'),
+      'initially rendered small'
+    );
+    await click('.image');
+    assert.ok(
+      this.element.querySelector('.image.wide'),
+      'redered wide after click'
+    );
+    await click('.image');
+    assert.ok(
+      this.element.querySelector('.image'),
+      'rendered small after click'
+    );
   });
 });
