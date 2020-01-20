@@ -9,8 +9,14 @@
   {{/link-to}}
 </div>
 
-{{#each this.model as |rentalUnit|}}
-  {{!-- rental-listing component. Pass rentalUnit into rental property --}}
-  {{rental-listing rental=rentalUnit}}
-{{/each}}
-{{outlet}}
+{{#list-filter filter=(action "filterByCity") as |filteredResults|}}
+  {{!-- Everything here gets rendered in the component's yield --}}
+  <ul class="results">
+    {{#each filteredResults as |rentalUnit|}}
+      {{!-- rental-listing component. Pass rentalUnit into rental property --}}
+      <li>
+        {{rental-listing rental=rentalUnit}}
+      </li>
+    {{/each}}
+  </ul>
+{{/list-filter}}
