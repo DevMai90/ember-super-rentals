@@ -6,5 +6,7 @@ export default Route.extend({
   model() {
     // Pass in name of the rental data model (class) that we're querying.
     return this.store.findAll('rental');
+
+    // This is a test
   }
 });
