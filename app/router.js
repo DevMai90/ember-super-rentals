@@ -6,7 +6,11 @@ const Router = EmberRouter.extend({
   rootURL: config.rootURL
 });
 
-Router.map(function() {
+Router.map(function () {
+  // Route name specfic URI
+  this.route('about', { path: 'boogers' });
+  this.route('contact', { path: 'snotrod' });
+  this.route('rentals', { path: 'pokemon' });
 });
 
 export default Router;
