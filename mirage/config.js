@@ -2,7 +2,7 @@ export default function () {
   // Provide data for URL requests beginning in with api.
   this.namespace = '/api';
 
-  // Data below will be returned when a request comes at /api/rentals
+  // Data below will be returned when a GET request comes at /api/rentals
   this.get('/rentals', function () {
     // /api + /rentals = /api/rentals
     return {
