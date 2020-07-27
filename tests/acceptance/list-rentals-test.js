@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { visit, currentURL, click } from '@ember/test-helpers';
+import { visit, currentURL, click, findAll } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 
 module('Acceptance | list rentals', function (hooks) {
@@ -45,7 +45,17 @@ module('Acceptance | list rentals', function (hooks) {
     );
   });
 
-  test('Should list available rentals', async function (assert) {});
+  test('Should list available rentals', async function (assert) {
+    assert.expect(1);
+
+    await visit('/');
+
+    assert.equal(
+      await findAll('.listing').length,
+      3,
+      'Renders the correct number of available rentals'
+    );
+  });
 
   test('Should filter the list of rentals by city', async function (assert) {});
 
