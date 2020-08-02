@@ -1,8 +1,10 @@
 export default function () {
   // Provide data for URL requests beginning in with api.
+  // We set this in our adapter
   this.namespace = '/api';
 
   // Data below will be returned when a GET request comes at /api/rentals
+  // Essentially listening to api calls from /api/rentals
   this.get('/rentals', function () {
     // /api + /rentals = /api/rentals
     return {
