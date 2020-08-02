@@ -1,0 +1,10 @@
+{{!-- Filter is an Ember helper --}}
+{{!-- Fire off handleFilterEntry when on key-up event --}}
+{{input
+  value=this.value
+  key-up=(action "handleFilterEntry")
+  class="light"
+  placeholder="Filter By City"
+}}
+{{!-- This is where the contents of our block component from rentals.hbs is rendered --}}
+{{yield this.results}}

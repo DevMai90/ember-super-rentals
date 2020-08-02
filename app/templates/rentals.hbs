@@ -7,6 +7,16 @@
   {{/link-to}}
 </div>
 
-{{#each this.model as |rental|}}
-  {{rental-listing rental=rental}}
-{{/each}}
+{{!-- Cannot have nested curly braces. Use paranthesis --}}
+{{!-- filterByCity is made available by the rentals controller --}}
+{{#list-filter filter=(action "filterByCity") as |filteredResults|}}
+  <ul class="results">
+    {{#each filteredResults as |rentalUnit|}}
+      <li>
+        {{rental-listing rental=rentalUnit}}
+      </li>
+    {{/each}}
+  </ul>
+{{/list-filter}}
+
+{{ouetlet}}
