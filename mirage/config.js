@@ -3,6 +3,8 @@ export default function () {
   // We set this in our adapter
   this.namespace = '/api';
 
+  this.passthrough('https://api.mapbox.com/**');
+
   // Data below will be returned when a GET request comes at /api/rentals
   // Essentially listening to api calls from /api/rentals. Mirage will intercept and return the mock data below.
   // this.get('/rentals', function () {

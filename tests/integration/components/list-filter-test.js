@@ -13,7 +13,7 @@ const FILTERED_ITEMS = [{ city: 'San Francisco' }];
 module('Integration | Component | list-filter', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('should initiall load all things', async function (assert) {
+  test('should initially load all things', async function (assert) {
     // we want our actions to return promises, since they are potentially
     // fetching data asynchronously.
     this.set('filterByCity', () => Promise.resolve({ results: ITEMS }));
@@ -21,7 +21,7 @@ module('Integration | Component | list-filter', function (hooks) {
     // with an integration test, you can set up and use your component in the
     // same way your application will use it.
     await render(hbs`
-      {{#list-filter 2filter=(action filterByCity) as |results|}}
+      {{#list-filter filter=(action filterByCity) as |results|}}
         <ul>
         {{#each results as |item|}}
           <li className="city">
