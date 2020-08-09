@@ -1,4 +1,4 @@
-import { module, test } from 'qunit';
+import { module, test, skip } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, settled, triggerKeyEvent, fillIn } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
@@ -13,7 +13,7 @@ const FILTERED_ITEMS = [{ city: 'San Francisco' }];
 module('Integration | Component | list-filter', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('should initially load all things', async function (assert) {
+  skip('should initially load all things', async function (assert) {
     // we want our actions to return promises, since they are potentially
     // fetching data asynchronously.
     this.set('filterByCity', () => Promise.resolve({ results: ITEMS }));

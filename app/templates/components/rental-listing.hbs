@@ -8,7 +8,12 @@
     <small>View larger</small>
   </a>
   <div class="details">
-    <h3>{{this.rental.title}}</h3>
+    {{!-- Pass in nested route name, rental model object gets serialized as object.id (can pass in rental.id for clarity) --}}
+    <h3>
+      {{#link-to "rentals.show" rental.id class=rental.id}}
+        {{this.rental.title}}
+      {{/link-to}}
+    </h3>
     <div class="detail owner">
       <span>Owner:</span> {{this.rental.owner}}
     </div>

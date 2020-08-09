@@ -3,6 +3,7 @@ import {
   visit,
   currentURL,
   click,
+  find,
   findAll,
   fillIn,
   triggerKeyEvent
@@ -21,7 +22,7 @@ module('Acceptance | list rentals', function (hooks) {
 
     assert.equal(
       currentURL(),
-      '/pokemons',
+      '/pokemons/lolz',
       'Should redirect automatically to pokemons route (alias for rentals route)'
     );
   });
@@ -86,5 +87,24 @@ module('Acceptance | list rentals', function (hooks) {
     );
   });
 
-  test('Should show details for a selected rental', async function (assert) {});
+  test('Should show details for a selected rental', async function (assert) {
+    assert.expect(3);
+
+    await visit('/pokemons/lolz');
+    await click('.grand-old-mansion');
+
+    assert.equal(
+      currentURL(),
+      '/pokemons/grand-old-mansion',
+      'should navigate to rental details'
+    );
+    assert.ok(
+      find('.show-listing h2').textContent.includes('Grand Old Mansion'),
+      'should list rental title'
+    );
+    assert.ok(
+      find('.show-listing .description'),
+      'should list description of property'
+    );
+  });
 });
