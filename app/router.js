@@ -11,7 +11,8 @@ Router.map(function () {
   this.route('about', { path: 'boogers' });
   this.route('contact', { path: 'snotrod' });
   this.route('rentals', { path: 'pokemons' }, function () {
-    this.route('index', { path: '/' });
+    this.route('index', { path: 'lolz' });
+    this.route('show', { path: '/:rental_id' }); // Alias it with a rental_id parameter
   });
 });
 
