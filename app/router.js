@@ -10,7 +10,9 @@ Router.map(function () {
   // Route name specfic URI
   this.route('about', { path: 'boogers' });
   this.route('contact', { path: 'snotrod' });
-  this.route('rentals', { path: 'pokemons' });
+  this.route('rentals', { path: 'pokemons' }, function () {
+    this.route('index', { path: '/' });
+  });
 });
 
 export default Router;
