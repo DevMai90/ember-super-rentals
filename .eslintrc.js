@@ -19,7 +19,9 @@ module.exports = {
   env: {
     browser: true,
   },
-  rules: {},
+  rules: {
+    'space-before-function-paren': 'never'
+  },
   overrides: [
     // node files
     {
