@@ -1,3 +1,5 @@
+const API_KEYS = require('./API_KEYS');
+
 'use strict';
 
 module.exports = function (environment) {
@@ -46,6 +48,8 @@ module.exports = function (environment) {
   if (environment === 'production') {
     // here you can enable a production-specific feature
   }
+
+  ENV.MAPBOX_ACCESS_TOKEN = API_KEYS.MAPBOX_API_KEY;
 
   return ENV;
 };
