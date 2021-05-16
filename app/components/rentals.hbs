@@ -1,0 +1,18 @@
+<div class="rentals">
+  <label>
+    <span>Where would you like to stay?</span>
+    <Input @value={{this.query}} class="light" />
+  </label>
+  <ul class="results">
+    {{!-- Results is from the Filter component. Child component provides data to invoking component
+      In this case, it is returning the data yielded from the child component as this.results.
+      These are positional arguments and determined by the child component. See 'peekz' example
+    --}}
+    <Rentals::Filter @rentals={{@rentals}} @query={{this.query}} as |results1 peekz|>
+      {{log peekz}}
+      {{#each results1 as |rental|}}
+        <li><Rental @rental={{rental}}/></li>
+      {{/each}}
+    </Rentals::Filter>
+  </ul>
+</div>
